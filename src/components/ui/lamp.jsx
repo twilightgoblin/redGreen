@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { cn } from "../../lib/utils";
 
 export default function LampDemo() {
   return (
@@ -14,7 +14,7 @@ export default function LampDemo() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
+        className="mt-8 bg-gradient-to-br from-black via-gray-500 to-black py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
         Build lamps <br /> the right way
       </motion.h1>
     </LampContainer>
@@ -72,7 +72,7 @@ export const LampContainer = ({
         <div
           className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
         <div
-          className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-3xl"></div>
+          className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-cyan-800 opacity-50 blur-3xl"></div>
         <motion.div
           initial={{ width: "8rem" }}
           whileInView={{ width: "16rem" }}
