@@ -52,7 +52,7 @@ export function LampDemo() {
           initial={{ opacity: 0, y: 90 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeInOut" }}
-          className="mt-8 md:mt-10"
+          className="mt-10 md:mt-10"
         >
           <AnimatedButton
             onClick={handleGetStarted} // <-- client-side navigation
