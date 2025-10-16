@@ -6,6 +6,7 @@ import { LampContainer } from "@/components/ui/lamp";
 import SplashCursor from "./components/SplashCursor";
 import SparkleNavbar from "./components/SparkleNavbar";
 import { AnimatedButton } from "@/components/ui/animated-button";
+import Features  from "./pages/Features";
 import { useNavigate } from "react-router-dom"; // <-- React Router hook
 
 export function LampDemo() {
@@ -84,7 +85,7 @@ const App = () => {
       {/* Navbar fixed */}
       <div className="fixed top-0 left-0 w-full z-50">
         <SparkleNavbar
-          items={["Home", "About", "Services", "Contact"]}
+          items={["Home", "Features", "About", "Contact"]}
           color="#1E90FF"
         />
       </div>
@@ -95,6 +96,7 @@ const App = () => {
       </div>
 
       <SplashCursor />
+      <Features />
     </div>
   );
 };
