@@ -168,7 +168,7 @@ const FlagPulseFeatures = () => {
       { icon: "User2", title: "Interactive Quiz Flow", description: "Answer questions in a dynamic, gamified experience to uncover flags accurately.", position: "right", cornerStyle: "sm:-translate-x-4 sm:rounded-tl-[2px]" }
     ],
     centerColumn: {
-      header: "Key Benefits of FlagPulse",
+      header: "Key Benefits of RedGreen",
       subHeader: "Discover green flags, spot red flags, and get practical advice in a fun, humanized way.",
       tag: "Features"
     }

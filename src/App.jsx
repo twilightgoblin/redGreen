@@ -2,20 +2,21 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { LampContainer } from "@/components/ui/lamp";
+import { LampContainer } from "@/components/ui/Lamp";
 import SplashCursor from "./components/SplashCursor";
 import SparkleNavbar from "./components/SparkleNavbar";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import Features from "./pages/Features";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { useNavigate } from "react-router-dom"; // <-- React Router hook
+import { useNavigate } from "react-router-dom";
+import { Heart, Zap, Shield, Star } from "lucide-react";
 
 // ------------------------- Hero Component -------------------------
 export function LampDemo() {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate("/quiz"); // navigate without page reload
+    navigate("/quiz");
   };
 
   return (
@@ -25,14 +26,14 @@ export function LampDemo() {
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          transition={{ delay: 0.1, duration: 0.4, ease: "easeInOut" }}
           className="text-4xl font-medium tracking-tight md:text-7xl"
         >
           Spot the{" "}
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
             className="bg-gradient-to-br from-green-400 via-green-500 to-green-600 bg-clip-text text-transparent"
           >
             green
@@ -42,7 +43,7 @@ export function LampDemo() {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.4 }}
             className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent"
           >
             red
@@ -58,7 +59,7 @@ export function LampDemo() {
           className="mt-10 md:mt-10"
         >
           <AnimatedButton
-            onClick={handleGetStarted} // <-- client-side navigation
+            onClick={handleGetStarted}
             className="text-white font-semibold shadow-lg"
             variant="default"
             size="default"
@@ -82,15 +83,13 @@ export function LampDemo() {
 }
 
 // ------------------------- About Section -------------------------
-import { Heart, Zap, Shield, Star } from "lucide-react";
-
 const iconMap = { Heart, Zap, Shield, Star };
 
 const aboutUs = {
-  title: "About FlagPulse",
+  title: "About RedGreen",
   subTitle: "Know the vibes. Spot the signals. Navigate life smarter.",
   description:
-    "FlagPulse is your digital companion to decode interactions, relationships, and situations. We help you identify green flags, spot red flags, and get practical advice in three humanized modes: Comfort, Roast, and Truth. Our dynamic quizzes and insights make understanding yourself and others fun, fast, and actionable.",
+    "RedGreen is your digital companion to decode interactions, relationships, and situations. We help you identify green flags, spot red flags, and get practical advice in three humanized modes: Comfort, Roast, and Truth. Our dynamic quizzes and insights make understanding yourself and others fun, fast, and actionable.",
   values: [
     {
       icon: "Heart",
@@ -114,14 +113,14 @@ const aboutUs = {
       icon: "Star",
       title: "Practical Guidance",
       description:
-        "Not just theory — actionable advice to patch situations, celebrate wins, and avoid pitfalls."
+        "Not just theory — actionable advice to patch situations, celebrate wins."
     }
   ]
 };
 
 export const AboutSection = () => {
   return (
-    <section className="relative w-full min-h-[800px] py-20 bg-gradient-to-b from-gray-900 via-cyan-900 to-gray-900 flex flex-col items-center justify-center text-center gap-12">
+    <section className="relative w-full min-h-screen py-24 bg-gradient-to-b from-gray-900 via-cyan-900 to-gray-900 flex flex-col items-center justify-center text-center gap-12">
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -166,13 +165,19 @@ export const AboutSection = () => {
             >
               <CardSpotlight
                 radius={250}
-                color="#0e4c59" // dark cyan background
+                color="#0e4c59"
                 className="w-72 md:w-80 p-6"
               >
                 <div className="text-center flex flex-col items-center gap-4">
-                  {IconComponent && <IconComponent size={36} className="text-cyan-400" />}
-                  <h3 className="text-xl font-semibold text-cyan-200">{value.title}</h3>
-                  <p className="text-sm text-cyan-100 opacity-90">{value.description}</p>
+                  {IconComponent && (
+                    <IconComponent size={36} className="text-cyan-400" />
+                  )}
+                  <h3 className="text-xl font-semibold text-cyan-200">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm text-cyan-100 opacity-90">
+                    {value.description}
+                  </p>
                 </div>
               </CardSpotlight>
             </motion.div>
@@ -187,7 +192,10 @@ export const AboutSection = () => {
 const App = () => {
   return (
     <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
-      {/* Navbar fixed */}
+      {/* SplashCursor - only on hero page */}
+      <SplashCursor />
+      
+      {/* Navbar */}
       <div className="fixed top-0 left-0 w-full z-50">
         <SparkleNavbar
           items={["Home", "Features", "About", "Contact"]}
@@ -195,19 +203,20 @@ const App = () => {
         />
       </div>
 
-      {/* Lamp Demo Hero */}
+      {/* Hero Section */}
       <div className="flex items-center justify-center h-screen">
         <LampDemo />
       </div>
 
-      {/* Cursor */}
-      <SplashCursor />
+        {/* Features Section (after About) */}
+      <Features />
 
-      {/* About Section */}
+      {/* About Section (now first) */}
       <AboutSection />
 
-      {/* Features */}
-      <Features />
+
+
+    
     </div>
   );
 };
