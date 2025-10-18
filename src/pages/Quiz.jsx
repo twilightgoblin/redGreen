@@ -21,10 +21,15 @@ const Quiz = () => {
   const startQuiz = async () => {
     try {
       const { mockAPI } = await import('../api/mockQuizAPI');
+      
+      // Clear any existing session first
+      await mockAPI.clearSession(sessionId);
+      
       const quizData = await mockAPI.startQuiz(sessionId);
-      console.log('Started quiz:', quizData);
+      console.log('🎯 Started fresh quiz:', quizData);
       setCurrentQuestion(quizData.question);
       setQuestionNumber(quizData.questionNumber);
+      setScores({ green: 0, red: 0, beige: 0 }); // Reset scores
       setLoading(false);
       setShowIntro(false);
     } catch (error) {
@@ -66,9 +71,21 @@ const Quiz = () => {
   const handleAnswer = async (selectedOption) => {
     try {
       const { mockAPI } = await import('../api/mockQuizAPI');
-      const response = await mockAPI.updateAnswer(sessionId, currentQuestion.id, selectedOption);
       
-      console.log('Answer response:', response);
+      // Find the option index
+      const optionIndex = currentQuestion.options.findIndex(opt => 
+        opt.text === selectedOption.text && 
+        JSON.stringify(opt.flagImpact) === JSON.stringify(selectedOption.flagImpact)
+      );
+      
+      if (optionIndex === -1) {
+        console.error('Option not found');
+        return;
+      }
+      
+      const response = await mockAPI.answerQuestion(sessionId, currentQuestion.id, optionIndex);
+      
+      console.log('🎯 Adaptive answer response:', response);
       
       if (response.success) {
         // Update local scores
@@ -76,6 +93,7 @@ const Quiz = () => {
         
         if (response.quizComplete) {
           // Quiz is complete, get final result
+          console.log('🏁 Quiz completed with verdict:', response.verdict);
           await getResult();
         } else if (response.nextQuestion) {
           // Check if we should show vibe break (at question 5)
@@ -152,7 +170,7 @@ const Quiz = () => {
     const messages = {
       green: "Your partner's looking pretty solid so far 💚 Halfway there - let's see if this holds up!",
       red: "Oop, seeing some red flags already 🚩 Let's dig deeper to confirm the pattern...",
-      beige: "Your partner's giving mixed energy 🤷‍♀️ Halfway through - the picture is getting clearer..."
+      beige: "Your partner's sending mixed signals 🤷‍♀️ Halfway through - the picture is getting clearer..."
     };
     return messages[dominant];
   };
@@ -198,7 +216,7 @@ const Quiz = () => {
             >
               ← Back to Home
             </button>
-            <div className="text-cyan-400 font-semibold">Partner Flag Finder 💘</div>
+            <div className="text-cyan-400 font-semibold"> Red Or Green ?</div>
           </div>
         </div>
         
@@ -233,7 +251,7 @@ const Quiz = () => {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-xl text-gray-300 mb-8 leading-relaxed"
             >
-              Answer honestly — we'll figure out if your partner is a Green, Beige, or Red Flag.
+              Answer honestly — we'll figure out if your partner is a Green Or Red Flag.
             </motion.p>
             
             <motion.div
@@ -254,7 +272,7 @@ const Quiz = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-yellow-400">🤷‍♀️</span>
-                  <span>Beige = Mixed signals</span>
+                  <span>Mixed Signals = Inconsistent vibes</span>
                 </div>
               </div>
             </motion.div>

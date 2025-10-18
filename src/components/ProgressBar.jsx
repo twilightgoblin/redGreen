@@ -13,12 +13,12 @@ const ProgressBar = ({ current, total }) => {
         </span>
       </div>
       
-      <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+      <div className="w-full h-3 bg-gray-800/50 rounded-full border border-gray-600/30 overflow-hidden shadow-inner">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full relative"
+          className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full relative shadow-lg"
         >
           {/* Animated shimmer effect */}
           <motion.div
@@ -29,8 +29,11 @@ const ProgressBar = ({ current, total }) => {
               ease: "linear",
               repeatDelay: 1 
             }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-20 skew-x-12"
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-20 skew-x-12"
           />
+          
+          {/* Glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-500/20 rounded-full blur-sm" />
         </motion.div>
       </div>
     </div>

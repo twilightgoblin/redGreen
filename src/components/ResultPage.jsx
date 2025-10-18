@@ -27,7 +27,7 @@ const ResultPage = ({ result, onRestart }) => {
       color: "from-yellow-400 to-amber-600",
       bgGradient: "from-yellow-900/20 via-gray-900 to-black", 
       emoji: "🤷‍♀️",
-      title: "Beige Flag Territory",
+      title: "Mixed Signals",
       description: "It's complicated..."
     }
   };
@@ -56,13 +56,13 @@ const ResultPage = ({ result, onRestart }) => {
   const config = flagConfig[dominantFlag];
 
   const handleShare = () => {
-    const shareText = `I just analyzed my partner with RedGreen's Partner Flag Finder and they're a ${config.title}! ${config.emoji} Check your relationship at redgreen.app`;
+    const shareText = `I just analyzed my partner with RedGreen's Partner Flag Finder and they're a ${config.title}! ${config.emoji} Test whether your friend is red or green or yourself too at ${window.location.origin}/quiz`;
     
     if (navigator.share) {
       navigator.share({
         title: 'My Partner Flag Analysis',
         text: shareText,
-        url: window.location.origin
+        url: `${window.location.origin}/quiz`
       });
     } else {
       navigator.clipboard.writeText(shareText);
@@ -131,29 +131,72 @@ const ResultPage = ({ result, onRestart }) => {
             className="bg-gray-800/50 rounded-2xl p-6 mb-8 backdrop-blur-sm"
           >
             <h3 className="text-xl font-semibold text-white mb-4 text-center">Your Vibe Breakdown</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {Object.entries(scores).map(([flag, score]) => (
-                <div key={flag} className="text-center">
-                  <div className={`text-2xl font-bold ${
-                    flag === 'green' ? 'text-green-400' :
-                    flag === 'red' ? 'text-red-400' : 'text-yellow-400'
-                  }`}>
-                    {score}
+            {result.adaptiveFlow && (
+              <div className="text-center mb-4">
+                <span className="text-xs text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded-full">
+                  🧠 Adaptive Analysis • {result.questionsAsked} of {result.totalPossibleQuestions}+ questions
+                </span>
+              </div>
+            )}
+            <div className="space-y-6">
+              {Object.entries(scores).map(([flag, score]) => {
+                const maxScore = 30; // 10 questions × 3 points max
+                const percentage = (score / maxScore) * 100;
+                
+                return (
+                  <div key={flag} className="bg-gray-800/30 rounded-xl p-4 border border-gray-600/50">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-4 h-4 rounded-full ${
+                          flag === 'green' ? 'bg-green-400' :
+                          flag === 'red' ? 'bg-red-400' : 'bg-yellow-400'
+                        }`} />
+                        <span className="text-white font-medium">
+                          {flag === 'beige' ? 'Mixed Signals' : `${flag.charAt(0).toUpperCase() + flag.slice(1)} Flags`}
+                        </span>
+                      </div>
+                      <div className={`text-xl font-bold ${
+                        flag === 'green' ? 'text-green-400' :
+                        flag === 'red' ? 'text-red-400' : 'text-yellow-400'
+                      }`}>
+                        {score}
+                      </div>
+                    </div>
+                    
+                    <div className="relative">
+                      <div className="w-full bg-gray-700/50 rounded-full h-3 border border-gray-600/30">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${percentage}%` }}
+                          transition={{ delay: 1 + Object.keys(scores).indexOf(flag) * 0.3, duration: 1 }}
+                          className={`h-full rounded-full relative overflow-hidden ${
+                            flag === 'green' ? 'bg-gradient-to-r from-green-500 to-green-400' :
+                            flag === 'red' ? 'bg-gradient-to-r from-red-500 to-red-400' : 
+                            'bg-gradient-to-r from-yellow-500 to-yellow-400'
+                          }`}
+                        >
+                          {/* Shimmer effect */}
+                          <motion.div
+                            animate={{ x: [-100, 200] }}
+                            transition={{ 
+                              duration: 2, 
+                              repeat: Infinity, 
+                              ease: "linear",
+                              repeatDelay: 1 
+                            }}
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-20 skew-x-12"
+                          />
+                        </motion.div>
+                      </div>
+                      
+                      {/* Percentage label */}
+                      <div className="text-xs text-gray-400 mt-1 text-right">
+                        {Math.round(percentage)}% of max score
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-400 capitalize">{flag} Flags</div>
-                  <div className="w-full bg-gray-700 rounded-full h-2 mt-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${(score / 8) * 100}%` }}
-                      transition={{ delay: 1 + Object.keys(scores).indexOf(flag) * 0.2, duration: 0.8 }}
-                      className={`h-2 rounded-full ${
-                        flag === 'green' ? 'bg-green-400' :
-                        flag === 'red' ? 'bg-red-400' : 'bg-yellow-400'
-                      }`}
-                    />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
 
@@ -234,7 +277,10 @@ const ResultPage = ({ result, onRestart }) => {
             </button>
             
             <button
-              onClick={onRestart}
+              onClick={() => {
+                // Clear any cached data and restart
+                window.location.href = '/quiz';
+              }}
               className="flex items-center justify-center gap-2 px-8 py-4 bg-gray-700 text-white font-semibold rounded-xl hover:bg-gray-600 transition-all duration-300"
             >
               <RotateCcw size={20} />

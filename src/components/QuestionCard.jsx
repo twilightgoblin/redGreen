@@ -58,6 +58,11 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
         >
           <div className="text-cyan-400 text-sm font-medium mb-2">
             Question {questionNumber} of {totalQuestions}
+            {question.theme && (
+              <span className="ml-2 text-xs text-gray-400 italic">
+                • {question.theme.replace('_', ' ')}
+              </span>
+            )}
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-white leading-relaxed">
             {question.text}

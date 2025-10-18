@@ -10,6 +10,8 @@ import Features from "./pages/Features";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { useNavigate } from "react-router-dom";
 import { Heart, Zap, Shield, Star } from "lucide-react";
+import SlidingText from "./components/SlidingText";
+import Footer from "./components/Footer";
 
 // ------------------------- Hero Component -------------------------
 export function LampDemo() {
@@ -208,15 +210,17 @@ const App = () => {
         <LampDemo />
       </div>
 
-        {/* Features Section (after About) */}
+      {/* Features Section */}
       <Features />
 
-      {/* About Section (now first) */}
+      {/* About Section */}
       <AboutSection />
 
+      {/* Sliding Text Section */}
+      <SlidingText />
 
-
-    
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
