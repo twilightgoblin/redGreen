@@ -2,12 +2,12 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { LampContainer } from "@/components/ui/Lamp";
+import { LampContainer } from "@/components/ui/Lamp.jsx";
 import SplashCursor from "./components/SplashCursor";
 import SparkleNavbar from "./components/SparkleNavbar";
-import { AnimatedButton } from "@/components/ui/animated-button";
+import { AnimatedButton } from "@/components/ui/animated-button.jsx";
 import Features from "./pages/Features";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { CardSpotlight } from "@/components/ui/card-spotlight.jsx";
 import { useNavigate } from "react-router-dom";
 import { Heart, Zap, Shield, Star } from "lucide-react";
 import SlidingText from "./components/SlidingText";

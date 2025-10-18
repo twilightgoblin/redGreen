@@ -14,8 +14,8 @@ import {
   Shield
 } from "lucide-react";
 import SparkleNavbar from "../components/SparkleNavbar";
-import { AnimatedButton } from "@/components/ui/animated-button";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { AnimatedButton } from "@/components/ui/animated-button.jsx";
+import { CardSpotlight } from "@/components/ui/card-spotlight.jsx";
 import Footer from "../components/Footer";
 
 const HowItWorks = () => {

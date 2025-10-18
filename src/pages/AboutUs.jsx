@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { CardSpotlight } from "@/components/ui/card-spotlight.jsx";
 import { Heart, Zap, Shield, Star } from "lucide-react";
 
 const iconMap = { Heart, Zap, Shield, Star };
