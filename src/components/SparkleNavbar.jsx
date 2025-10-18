@@ -23,7 +23,12 @@ const SparkleNavbar = ({
     // Handle navigation based on item name
     switch (item.toLowerCase()) {
       case 'home':
-        navigate('/');
+        if (location.pathname === '/') {
+          // Scroll to top/hero section if already on home page
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          navigate('/');
+        }
         break;
       case 'features':
         if (location.pathname === '/') {
@@ -47,6 +52,7 @@ const SparkleNavbar = ({
           navigate('/#about');
         }
         break;
+      case 'working':
       case 'how it works':
         navigate('/how-it-works');
         break;

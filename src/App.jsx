@@ -2,12 +2,12 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { LampContainer } from "@/components/ui/Lamp.jsx";
+import { LampContainer } from "./components/ui/Lamp.jsx";
 import SplashCursor from "./components/SplashCursor";
 import SparkleNavbar from "./components/SparkleNavbar";
-import { AnimatedButton } from "@/components/ui/animated-button.jsx";
+import { AnimatedButton } from "./components/ui/animated-button.jsx";
 import Features from "./pages/Features";
-import { CardSpotlight } from "@/components/ui/card-spotlight.jsx";
+import { CardSpotlight } from "./components/ui/card-spotlight.jsx";
 import { useNavigate } from "react-router-dom";
 import { Heart, Zap, Shield, Star } from "lucide-react";
 import SlidingText from "./components/SlidingText";
@@ -196,11 +196,11 @@ const App = () => {
     <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
       {/* SplashCursor - only on hero page */}
       <SplashCursor />
-      
+
       {/* Navbar */}
       <div className="fixed top-0 left-0 w-full z-50">
         <SparkleNavbar
-          items={["Home", "Features", "About", "Working", "Contact"]}
+          items={["Home", "Features", "About", "How It Works", "Contact"]}
           color="#1E90FF"
         />
       </div>

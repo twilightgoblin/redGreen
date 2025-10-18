@@ -1,79 +1,8 @@
 {
-    "version": 2,
-    "name": "redgreen",
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        }
-    ],
-    "headers": [
-        {
-            "source": "/api/(.*)",
-            "headers": [
-                {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "*"
-                },
-                {
-                    "key": "Access-Control-Allow-Methods",
-                    "value": "GET, POST, PUT, DELETE, OPTIONS"
-                },
-                {
-                    "key": "Access-Control-Allow-Headers",
-                    "value": "Content-Type, Authorization"
-                }
-            ]
-        },
-        {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "X-Content-Type-Options",
-                    "value": "nosniff"
-                },
-                {
-                    "key": "X-Frame-Options",
-                    "value": "DENY"
-                },
-                {
-                    "key": "X-XSS-Protection",
-                    "value": "1; mode=block"
-                }
-            ]
-        }
-    ],
     "rewrites": [
         {
-            "source": "/quiz",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/features",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/about",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/working",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/contact",
+            "source": "/(.*)",
             "destination": "/index.html"
         }
-    ],
-    "env": {
-        "NODE_ENV": "production"
-    },
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist",
-    "installCommand": "npm install",
-    "devCommand": "npm run dev",
-    "framework": "vite"
+    ]
 }
