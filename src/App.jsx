@@ -200,7 +200,7 @@ const App = () => {
       {/* Navbar */}
       <div className="fixed top-0 left-0 w-full z-50">
         <SparkleNavbar
-          items={["Home", "Features", "About", "How It Works", "Contact"]}
+          items={["Home", "Features", "About", "Working", "Contact"]}
           color="#1E90FF"
         />
       </div>
