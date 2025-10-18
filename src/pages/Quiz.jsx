@@ -4,6 +4,7 @@ import QuestionCard from "../components/QuestionCard";
 import VibeBreak from "../components/VibeBreak";
 import ResultPage from "../components/ResultPage";
 import ProgressBar from "../components/ProgressBar";
+import SparkleNavbar from "../components/SparkleNavbar";
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -208,16 +209,11 @@ const Quiz = () => {
     return (
       <div className={`min-h-screen bg-gradient-to-br ${backgroundGradient} transition-all duration-1000 ease-in-out`}>
         {/* Navigation */}
-        <div className="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-sm">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <button
-              onClick={() => window.location.href = '/'}
-              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 flex items-center gap-2"
-            >
-              ← Back to Home
-            </button>
-            <div className="text-cyan-400 font-semibold"> Red Or Green ?</div>
-          </div>
+        <div className="fixed top-0 left-0 w-full z-50">
+          <SparkleNavbar
+            items={["Home", "Features", "About", "Contact"]}
+            color="#1E90FF"
+          />
         </div>
         
         <div className="flex items-center justify-center min-h-screen px-4">
@@ -295,16 +291,11 @@ const Quiz = () => {
   return (
     <div className={`min-h-screen bg-gradient-to-br ${backgroundGradient} transition-all duration-1000 ease-in-out`}>
       {/* Navigation */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <button
-            onClick={() => window.location.href = '/'}
-            className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 flex items-center gap-2"
-          >
-            ← Back to Home
-          </button>
-          <div className="text-cyan-400 font-semibold">Partner Flag Finder 💘</div>
-        </div>
+      <div className="fixed top-0 left-0 w-full z-50">
+        <SparkleNavbar
+          items={["Home", "Features", "About", "Contact"]}
+          color="#1E90FF"
+        />
       </div>
       
       <div className="container mx-auto px-4 py-8 pt-20">

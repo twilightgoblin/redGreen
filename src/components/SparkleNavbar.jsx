@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { HiMenu, HiX } from "react-icons/hi";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SparkleNavbar = ({
   items = ["Home", "About", "Services", "Contact"],
@@ -11,6 +12,62 @@ const SparkleNavbar = ({
   const underlineRefs = useRef([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0); // active section
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Navigation handler
+  const handleNavigation = (item, index) => {
+    setActiveIndex(index);
+    setMenuOpen(false);
+    
+    // Handle navigation based on item name
+    switch (item.toLowerCase()) {
+      case 'home':
+        navigate('/');
+        break;
+      case 'features':
+        if (location.pathname === '/') {
+          // Scroll to features section on home page
+          const featuresSection = document.getElementById('features');
+          if (featuresSection) {
+            featuresSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          navigate('/features');
+        }
+        break;
+      case 'about':
+        if (location.pathname === '/') {
+          // Scroll to about section on home page
+          const aboutSection = document.getElementById('about');
+          if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          navigate('/#about');
+        }
+        break;
+      case 'how it works':
+        navigate('/how-it-works');
+        break;
+      case 'contact':
+        if (location.pathname === '/') {
+          // Scroll to footer/contact section on home page
+          const contactSection = document.getElementById('contact');
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          navigate('/#contact');
+        }
+        break;
+      default:
+        break;
+    }
+    
+    // Call the optional onItemClick prop
+    onItemClick?.(item);
+  };
 
   // GSAP for the active underline
   useEffect(() => {
@@ -38,10 +95,7 @@ const SparkleNavbar = ({
         {items.map((item, index) => (
           <li
             key={index}
-            onClick={() => {
-              setActiveIndex(index);
-              onItemClick?.(item);
-            }}
+            onClick={() => handleNavigation(item, index)}
             className="relative cursor-pointer text-lg font-medium transition-all duration-300 hover:text-cyan-400 hover:drop-shadow-[0_0_8px_#22d3ee]"
           >
             <span className="relative inline-block pb-1">{item}</span>
@@ -74,11 +128,7 @@ const SparkleNavbar = ({
         {items.map((item, index) => (
           <div
             key={index}
-            onClick={() => {
-              setActiveIndex(index);
-              setMenuOpen(false);
-              onItemClick?.(item);
-            }}
+            onClick={() => handleNavigation(item, index)}
             className={`text-lg font-medium cursor-pointer transition-all duration-300 ${
               index === activeIndex ? "text-cyan-400" : "text-white"
             } hover:text-cyan-400`}

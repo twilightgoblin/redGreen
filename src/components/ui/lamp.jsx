@@ -9,10 +9,10 @@ export function LampContainer({ children, className = "" }) {
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          animate={{ opacity: 1, width: "30rem" }}
           transition={{
             delay: 0.1,
-            duration: 0.8,
+            duration: 0.6,
             ease: "easeInOut",
           }}
           style={{
@@ -25,10 +25,10 @@ export function LampContainer({ children, className = "" }) {
         </motion.div>
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          animate={{ opacity: 1, width: "30rem" }}
           transition={{
             delay: 0.1,
-            duration: 0.8,
+            duration: 0.6,
             ease: "easeInOut",
           }}
           style={{
@@ -44,20 +44,20 @@ export function LampContainer({ children, className = "" }) {
         <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-3xl"></div>
         <motion.div
           initial={{ width: "8rem" }}
-          whileInView={{ width: "16rem" }}
+          animate={{ width: "16rem" }}
           transition={{
             delay: 0.1,
-            duration: 0.8,
+            duration: 0.6,
             ease: "easeInOut",
           }}
           className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-cyan-400 blur-2xl"
         ></motion.div>
         <motion.div
           initial={{ width: "15rem" }}
-          whileInView={{ width: "30rem" }}
+          animate={{ width: "30rem" }}
           transition={{
             delay: 0.1,
-            duration: 0.8,
+            duration: 0.6,
             ease: "easeInOut",
           }}
           className="absolute inset-auto z-50 h-0.5 w-[30rem] -translate-y-[7rem] bg-cyan-400"

@@ -8,40 +8,20 @@ const Footer = () => {
       { name: "Features", href: "#features" },
       { name: "Quiz", href: "/quiz" },
       { name: "About", href: "#about" },
-      { name: "How it Works", href: "#how" }
-    ],
-    resources: [
-      { name: "Blog", href: "#blog" },
-      { name: "Documentation", href: "#docs" },
-      { name: "Help Center", href: "#help" },
-      { name: "Community", href: "#community" }
-    ],
-    company: [
-      { name: "About Us", href: "#about" },
-      { name: "Privacy Policy", href: "#privacy" },
-      { name: "Terms of Service", href: "#terms" },
-      { name: "Contact", href: "#contact" }
-    ],
-    support: [
-      { name: "Contact Us", href: "#contact" },
-      { name: "FAQs", href: "#faqs" },
-      { name: "Feedback", href: "#feedback" },
-      { name: "Report Issue", href: "#report" }
+      { name: "How it Works", href: "/how-it-works" }
     ]
   };
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Mail, href: "#", label: "Email" }
+    { icon: Github, href: "https://github.com/twilightgoblin", label: "GitHub" },
+    { icon: Mail, href: "mailto:goblintwilight@gmail.com", label: "Email" }
   ];
 
   return (
     <footer className="relative w-full bg-black text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <motion.div
@@ -80,39 +60,81 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Sections */}
-          {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
-            <div key={category}>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="text-white font-semibold mb-4 capitalize hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
-              >
-                {category}
-              </motion.h3>
-              <ul className="space-y-3">
-                {links.map((link, linkIndex) => (
-                  <motion.li
-                    key={linkIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ 
-                      duration: 0.4, 
-                      delay: categoryIndex * 0.1 + linkIndex * 0.05 
-                    }}
+          {/* Product Links */}
+          <div>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white font-semibold mb-4 capitalize hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
+            >
+              Product
+            </motion.h3>
+            <ul className="space-y-3">
+              {footerLinks.product.map((link, linkIndex) => (
+                <motion.li
+                  key={linkIndex}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: linkIndex * 0.05 
+                  }}
+                >
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
                   >
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                    {link.name}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Section */}
+          <div>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-white font-semibold mb-4 hover:text-cyan-400 transition-colors duration-300"
+            >
+              Get in Touch
+            </motion.h3>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-3"
+            >
+              <p className="text-gray-400 text-sm">
+                Got ideas to make RedGreen better?
+              </p>
+              <div className="flex flex-col gap-2">
+                <motion.a
+                  href="mailto:goblintwilight@gmail.com?subject=RedGreen%20Feedback&body=Hi!%0A%0AI%20have%20some%20feedback%20about%20RedGreen:%0A%0A"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 w-fit"
+                >
+                  <Mail size={14} />
+                  Send Feedback
+                </motion.a>
+                <motion.a
+                  href="https://github.com/twilightgoblin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 w-fit"
+                >
+                  <Github size={14} />
+                  View on GitHub
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
@@ -126,8 +148,7 @@ const Footer = () => {
               transition={{ duration: 0.6 }}
               className="text-gray-400 text-sm flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
             >
-              © 2024 RedGreen. All rights reserved. Made with{" "}
-              <Heart size={16} className="text-red-400" /> for better connections.
+              © 2025 RedGreen. All rights reserved.
             </motion.p>
             
             <motion.div

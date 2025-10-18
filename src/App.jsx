@@ -27,15 +27,15 @@ export function LampDemo() {
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.4, ease: "easeInOut" }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
           className="text-4xl font-medium tracking-tight md:text-7xl"
         >
           Spot the{" "}
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.4 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
             className="bg-gradient-to-br from-green-400 via-green-500 to-green-600 bg-clip-text text-transparent"
           >
             green
@@ -56,8 +56,8 @@ export function LampDemo() {
         {/* Button */}
         <motion.div
           initial={{ opacity: 0, y: 90 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: "easeInOut" }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
           className="mt-10 md:mt-10"
         >
           <AnimatedButton
@@ -200,7 +200,7 @@ const App = () => {
       {/* Navbar */}
       <div className="fixed top-0 left-0 w-full z-50">
         <SparkleNavbar
-          items={["Home", "Features", "About", "Contact"]}
+          items={["Home", "Features", "About", "How It Works", "Contact"]}
           color="#1E90FF"
         />
       </div>
@@ -211,16 +211,22 @@ const App = () => {
       </div>
 
       {/* Features Section */}
-      <Features />
+      <div id="features">
+        <Features />
+      </div>
 
       {/* About Section */}
-      <AboutSection />
+      <div id="about">
+        <AboutSection />
+      </div>
 
       {/* Sliding Text Section */}
       <SlidingText />
 
       {/* Footer */}
-      <Footer />
+      <div id="contact">
+        <Footer />
+      </div>
     </div>
   );
 };
