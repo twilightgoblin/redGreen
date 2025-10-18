@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { LampContainer } from "./components/ui/Lamp.jsx";
+import { LampContainer } from "./components/ui/Lamp";
 import SplashCursor from "./components/SplashCursor";
 import SparkleNavbar from "./components/SparkleNavbar";
 import { AnimatedButton } from "./components/ui/animated-button.jsx";
