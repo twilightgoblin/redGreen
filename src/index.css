@@ -134,6 +134,51 @@
     }
   }
   
+  /* iPad and tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .tablet-optimized {
+      padding: 2rem;
+    }
+    
+    .tablet-text-scale {
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+    
+    .tablet-button {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+    
+    .tablet-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .tablet-card {
+      padding: 2rem;
+      border-radius: 1.5rem;
+    }
+  }
+  
+  /* iPad Pro and larger tablets */
+  @media (min-width: 1024px) and (max-width: 1366px) {
+    .ipad-pro-layout {
+      max-width: 90vw;
+      margin: 0 auto;
+    }
+    
+    .ipad-pro-text {
+      font-size: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .ipad-pro-spacing {
+      padding: 3rem;
+      gap: 2.5rem;
+    }
+  }
+  
   /* Better text scaling on mobile */
   @media (max-width: 480px) {
     .responsive-text-lg {
@@ -156,5 +201,68 @@
   .mobile-container {
     max-width: 100vw;
     overflow-x: hidden;
+  }
+  
+  /* iPad landscape orientation */
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .landscape-layout {
+      padding: 1.5rem 3rem;
+    }
+    
+    .landscape-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+    
+    .landscape-text {
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+  }
+  
+  /* iPad portrait orientation */
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .portrait-layout {
+      padding: 2rem 1.5rem;
+    }
+    
+    .portrait-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .portrait-text {
+      font-size: 1.25rem;
+      line-height: 1.7;
+    }
+  }
+  
+  /* iPad specific touch improvements */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    button, .clickable {
+      min-height: 48px;
+      min-width: 48px;
+      padding: 0.75rem 1.5rem;
+    }
+    
+    .quiz-option {
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .result-card {
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-card {
+      padding: 2rem;
+      min-height: 280px;
+    }
+    
+    .navigation-item {
+      padding: 0.75rem 1rem;
+      font-size: 1.125rem;
+    }
   }
 }

@@ -280,7 +280,7 @@ const Quiz = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 px-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 px-4"
             >
               Choose Your Vibe Check
             </motion.h1>
@@ -311,19 +311,19 @@ const Quiz = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto px-4"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto px-4"
             >
               <motion.button
                 onClick={() => startQuiz('partner')}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative overflow-hidden bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-cyan-700/10 backdrop-blur-sm border border-cyan-400/20 rounded-2xl p-6 sm:p-8 text-white font-semibold transition-all duration-300 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/20 w-full"
+                className="group relative overflow-hidden bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-cyan-700/10 backdrop-blur-sm border border-cyan-400/20 rounded-2xl p-6 sm:p-8 md:p-10 text-white font-semibold transition-all duration-300 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/20 w-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 text-center">
                   <div className="text-4xl sm:text-5xl mb-2 group-hover:scale-110 transition-transform duration-300">💕</div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-cyan-300 mb-2">Test Your Partner</h3>
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-300 mb-2">Test Your Partner</h3>
+                  <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
                     Analyze their behavior patterns and discover if they're showing green or red flags in your relationship.
                   </p>
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400">
@@ -337,13 +337,13 @@ const Quiz = () => {
                 onClick={() => startQuiz('self')}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative overflow-hidden bg-gradient-to-br from-red-500/10 via-pink-600/10 to-red-700/10 backdrop-blur-sm border border-red-400/20 rounded-2xl p-6 sm:p-8 text-white font-semibold transition-all duration-300 hover:border-red-400/40 hover:shadow-2xl hover:shadow-red-500/20 w-full"
+                className="group relative overflow-hidden bg-gradient-to-br from-red-500/10 via-pink-600/10 to-red-700/10 backdrop-blur-sm border border-red-400/20 rounded-2xl p-6 sm:p-8 md:p-10 text-white font-semibold transition-all duration-300 hover:border-red-400/40 hover:shadow-2xl hover:shadow-red-500/20 w-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 text-center">
                   <div className="text-4xl sm:text-5xl mb-2 group-hover:scale-110 transition-transform duration-300">🪞</div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-red-300 mb-2">Know Your Flag</h3>
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-red-300 mb-2">Know Your Flag</h3>
+                  <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
                     Take an honest look at your own relationship behaviors and patterns. Self-awareness is the first step to growth.
                   </p>
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-red-400">

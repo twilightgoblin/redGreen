@@ -91,7 +91,7 @@ const ResultPage = ({ result, onRestart }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
           {/* Header */}
           <div className="text-center mb-12">
@@ -108,7 +108,7 @@ const ResultPage = ({ result, onRestart }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className={`text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r ${config.color} bg-clip-text text-transparent mb-4 px-4`}
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r ${config.color} bg-clip-text text-transparent mb-4 px-4`}
             >
               {config.title}
             </motion.h1>
@@ -128,7 +128,7 @@ const ResultPage = ({ result, onRestart }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="bg-gray-800/50 rounded-2xl p-6 mb-8 backdrop-blur-sm"
+            className="bg-gray-800/50 rounded-2xl p-6 md:p-8 mb-8 backdrop-blur-sm"
           >
             <h3 className="text-xl font-semibold text-white mb-4 text-center">Your Vibe Breakdown</h3>
             {result.adaptiveFlow && (
@@ -241,7 +241,7 @@ const ResultPage = ({ result, onRestart }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="bg-gray-800/50 rounded-2xl p-8 mb-8 backdrop-blur-sm"
+              className="bg-gray-800/50 rounded-2xl p-6 md:p-8 lg:p-10 mb-8 backdrop-blur-sm"
             >
               <div className="flex items-center gap-3 mb-4">
                 {React.createElement(toneConfig[selectedTone].icon, {
@@ -252,7 +252,7 @@ const ResultPage = ({ result, onRestart }) => {
                   {toneConfig[selectedTone].label} Mode
                 </h4>
               </div>
-              <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+              <p className="text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed">
                 {toneResponses[selectedTone]}
               </p>
               <div className="mt-4 text-xs text-gray-500 italic">

@@ -97,12 +97,12 @@ const SparkleNavbar = ({
   return (
     <nav className="w-full flex flex-col items-center justify-center text-white py-6 bg-transparent select-none">
       {/* Desktop Nav */}
-      <ul className="hidden md:flex gap-10 relative">
+      <ul className="hidden md:flex gap-8 lg:gap-10 relative">
         {items.map((item, index) => (
           <li
             key={index}
             onClick={() => handleNavigation(item, index)}
-            className="relative cursor-pointer text-lg font-medium transition-all duration-300 hover:text-cyan-400 hover:drop-shadow-[0_0_8px_#22d3ee]"
+            className="relative cursor-pointer text-base md:text-lg font-medium transition-all duration-300 hover:text-cyan-400 hover:drop-shadow-[0_0_8px_#22d3ee] px-2 py-1"
           >
             <span className="relative inline-block pb-1">{item}</span>
             {/* underline for active section */}

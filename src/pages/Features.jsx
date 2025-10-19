@@ -113,7 +113,7 @@ const FeatureCard = ({ feature, index, side }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <PixelCard className="transition-all duration-300">
-        <div className={`relative bg-slate-950 rounded-2xl p-4 sm:p-6 transition-all duration-300 ${feature.cornerStyle}`}>
+        <div className={`relative bg-slate-950 rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-300 ${feature.cornerStyle}`}>
           <div 
             className="absolute inset-0 pointer-events-none transition-opacity duration-700"
             style={{
@@ -138,10 +138,10 @@ const FeatureCard = ({ feature, index, side }) => {
                 isHovered ? 'translate-x-1 text-cyan-400' : ''
               }`} />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
               {feature.title}
             </h3>
-            <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed">
               {feature.description}
             </p>
             <div className="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-500" />

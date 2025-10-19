@@ -29,7 +29,7 @@ export function LampDemo() {
           initial={{ opacity: 0.5, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight px-4"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight px-4"
         >
           Spot the{" "}
           <motion.span
@@ -76,7 +76,7 @@ export function LampDemo() {
             background="linear-gradient(135deg, #7ebebf, #00CED1)"
             style={{ 
               padding: "0.75em 2em", 
-              fontSize: window.innerWidth < 640 ? "1rem" : "1.2rem",
+              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
               minWidth: "200px"
             }}
           >
@@ -154,7 +154,7 @@ export const AboutSection = () => {
         {aboutUs.description}
       </motion.p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 px-4 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 px-4 max-w-6xl mx-auto">
         {aboutUs.values.map((value, index) => {
           const IconComponent = iconMap[value.icon];
           return (
@@ -198,7 +198,7 @@ export const AboutSection = () => {
 // ------------------------- Main App -------------------------
 const App = () => {
   return (
-    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden mobile-container">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden mobile-container ipad-pro-layout">
       {/* SplashCursor - only on hero page */}
       <SplashCursor />
 

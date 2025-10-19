@@ -56,7 +56,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -50, scale: 0.9 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-2xl mx-auto"
+        className="w-full max-w-3xl mx-auto"
       >
         {/* Question Header */}
         <motion.div
@@ -73,7 +73,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
               </span>
             )}
           </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-relaxed">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-relaxed">
             {question.text}
           </h2>
         </motion.div>
@@ -89,7 +89,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
               onClick={() => handleAnswerClick(option)}
               disabled={isAnswering}
               className={`
-                w-full p-4 sm:p-6 rounded-2xl border-2 text-left transition-all duration-300
+                w-full p-4 sm:p-6 md:p-8 rounded-2xl border-2 text-left transition-all duration-300
                 ${selectedAnswer === option
                   ? 'border-cyan-400 bg-cyan-400/10 shadow-lg shadow-cyan-400/20'
                   : 'border-gray-600 bg-gray-800/50 hover:border-gray-400 hover:bg-gray-700/50'
@@ -111,7 +111,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
                   {String.fromCharCode(65 + index)}
                 </div>
                 <p className={`
-                  text-base sm:text-lg leading-relaxed
+                  text-base sm:text-lg md:text-xl leading-relaxed
                   ${selectedAnswer === option ? 'text-cyan-100' : 'text-gray-200 group-hover:text-white'}
                   transition-colors duration-300
                 `}>
