@@ -5,7 +5,7 @@ const ProgressBar = ({ current, total }) => {
   const progress = (current / total) * 100;
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-8">
+    <div className="w-full max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm text-gray-400">Progress</span>
         <span className="text-sm text-cyan-400 font-medium">
@@ -13,7 +13,7 @@ const ProgressBar = ({ current, total }) => {
         </span>
       </div>
       
-      <div className="w-full h-3 bg-gray-800/50 rounded-full border border-gray-600/30 overflow-hidden shadow-inner">
+      <div className="w-full h-2 sm:h-3 bg-gray-800/50 rounded-full border border-gray-600/30 overflow-hidden shadow-inner">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}

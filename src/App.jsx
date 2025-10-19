@@ -29,7 +29,7 @@ export function LampDemo() {
           initial={{ opacity: 0.5, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6, ease: "easeInOut" }}
-          className="text-4xl font-medium tracking-tight md:text-7xl"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight px-4"
         >
           Spot the{" "}
           <motion.span
@@ -58,11 +58,11 @@ export function LampDemo() {
           initial={{ opacity: 0, y: 90 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
-          className="mt-10 md:mt-10"
+          className="mt-8 md:mt-10 px-4"
         >
           <AnimatedButton
             onClick={handleGetStarted}
-            className="text-white font-semibold shadow-lg"
+            className="text-white font-semibold shadow-lg w-full sm:w-auto"
             variant="default"
             size="default"
             glow={true}
@@ -74,7 +74,11 @@ export function LampDemo() {
             shimmerDuration="3s"
             borderRadius="100px"
             background="linear-gradient(135deg, #7ebebf, #00CED1)"
-            style={{ padding: "0.75em 2em", fontSize: "1.2rem" }}
+            style={{ 
+              padding: "0.75em 2em", 
+              fontSize: window.innerWidth < 640 ? "1rem" : "1.2rem",
+              minWidth: "200px"
+            }}
           >
             GET STARTED
           </AnimatedButton>
@@ -127,7 +131,7 @@ export const AboutSection = () => {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="text-4xl font-bold text-cyan-400"
+        className="text-3xl sm:text-4xl font-bold text-cyan-400 px-4"
       >
         {aboutUs.title}
       </motion.h2>
@@ -136,7 +140,7 @@ export const AboutSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
-        className="max-w-2xl text-cyan-200 text-lg"
+        className="max-w-2xl text-cyan-200 text-base sm:text-lg px-4"
       >
         {aboutUs.subTitle}
       </motion.p>
@@ -145,12 +149,12 @@ export const AboutSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
-        className="max-w-4xl text-cyan-100 text-sm"
+        className="max-w-4xl text-cyan-100 text-sm sm:text-base px-4"
       >
         {aboutUs.description}
       </motion.p>
 
-      <div className="flex flex-wrap justify-center gap-8 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 px-4 max-w-6xl mx-auto">
         {aboutUs.values.map((value, index) => {
           const IconComponent = iconMap[value.icon];
           return (
@@ -161,23 +165,24 @@ export const AboutSection = () => {
               transition={{
                 duration: 0.8,
                 ease: "easeInOut",
-                delay: 0.2 + index * 0.2
+                delay: 0.2 + index * 0.1
               }}
               viewport={{ once: true }}
+              className="w-full"
             >
               <CardSpotlight
                 radius={250}
                 color="#0e4c59"
-                className="w-72 md:w-80 p-6"
+                className="w-full h-full p-4 sm:p-6"
               >
-                <div className="text-center flex flex-col items-center gap-4">
+                <div className="text-center flex flex-col items-center gap-3 sm:gap-4 h-full">
                   {IconComponent && (
-                    <IconComponent size={36} className="text-cyan-400" />
+                    <IconComponent size={32} className="text-cyan-400 flex-shrink-0" />
                   )}
-                  <h3 className="text-xl font-semibold text-cyan-200">
+                  <h3 className="text-lg sm:text-xl font-semibold text-cyan-200">
                     {value.title}
                   </h3>
-                  <p className="text-sm text-cyan-100 opacity-90">
+                  <p className="text-xs sm:text-sm text-cyan-100 opacity-90 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -193,7 +198,7 @@ export const AboutSection = () => {
 // ------------------------- Main App -------------------------
 const App = () => {
   return (
-    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden mobile-container">
       {/* SplashCursor - only on hero page */}
       <SplashCursor />
 

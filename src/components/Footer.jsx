@@ -20,8 +20,8 @@ const Footer = () => {
   return (
     <footer className="relative w-full bg-black text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <motion.div
@@ -36,7 +36,7 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-gray-400 text-sm mb-6 max-w-xs"
+              className="text-gray-400 text-sm mb-6 max-w-xs leading-relaxed"
             >
               Spot the signals, know the vibes, and navigate life with confidence. Your digital companion for better relationships and smarter decisions.
             </motion.p>
@@ -140,8 +140,8 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-center sm:text-left">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

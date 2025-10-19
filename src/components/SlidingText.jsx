@@ -17,7 +17,7 @@ const SlidingText = () => {
         {/* Sliding Text Animation */}
         <div className="flex whitespace-nowrap">
           <motion.div
-            className="flex items-center gap-16"
+            className="flex items-center gap-8 sm:gap-12 md:gap-16"
             animate={{
               x: [0, "-50%"]
             }}
@@ -32,12 +32,12 @@ const SlidingText = () => {
           >
             {/* Repeat the array multiple times for seamless loop */}
             {[...slidingTexts, ...slidingTexts, ...slidingTexts, ...slidingTexts].map((text, index) => (
-              <div key={index} className="flex items-center gap-16 flex-shrink-0">
-                <span className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800 bg-clip-text text-transparent select-none whitespace-nowrap hover:bg-gradient-to-r hover:from-cyan-400 hover:via-cyan-500 hover:to-cyan-600 transition-all duration-500 cursor-pointer">
+              <div key={index} className="flex items-center gap-8 sm:gap-12 md:gap-16 flex-shrink-0">
+                <span className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800 bg-clip-text text-transparent select-none whitespace-nowrap hover:bg-gradient-to-r hover:from-cyan-400 hover:via-cyan-500 hover:to-cyan-600 transition-all duration-500 cursor-pointer">
                   {text}
                 </span>
                 {/* Rose decorative element */}
-                <div className="text-4xl md:text-6xl flex-shrink-0">🌹</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl flex-shrink-0">🌹</div>
               </div>
             ))}
           </motion.div>

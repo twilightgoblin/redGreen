@@ -108,7 +108,7 @@ const ResultPage = ({ result, onRestart }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className={`text-4xl md:text-6xl font-bold bg-gradient-to-r ${config.color} bg-clip-text text-transparent mb-4`}
+              className={`text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r ${config.color} bg-clip-text text-transparent mb-4 px-4`}
             >
               {config.title}
             </motion.h1>
@@ -117,7 +117,7 @@ const ResultPage = ({ result, onRestart }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-xl text-gray-300 mb-8"
+              className="text-lg sm:text-xl text-gray-300 mb-8 px-4"
             >
               {config.description}
             </motion.p>
@@ -208,7 +208,7 @@ const ResultPage = ({ result, onRestart }) => {
             className="mb-8"
           >
             <h3 className="text-xl font-semibold text-white mb-4 text-center">Choose Your Vibe</h3>
-            <div className="flex justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4">
               {Object.entries(toneConfig).map(([tone, config]) => {
                 const IconComponent = config.icon;
                 return (
@@ -216,14 +216,14 @@ const ResultPage = ({ result, onRestart }) => {
                     key={tone}
                     onClick={() => setSelectedTone(tone)}
                     className={`
-                      flex items-center gap-2 px-6 py-3 rounded-xl border-2 transition-all duration-300
+                      flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl border-2 transition-all duration-300 text-sm sm:text-base
                       ${selectedTone === tone 
                         ? config.bgColor 
                         : 'bg-gray-800/50 border-gray-600 hover:border-gray-400'
                       }
                     `}
                   >
-                    <IconComponent size={20} className={selectedTone === tone ? config.color : 'text-gray-400'} />
+                    <IconComponent size={18} className={selectedTone === tone ? config.color : 'text-gray-400'} />
                     <span className={selectedTone === tone ? config.color : 'text-gray-400'}>
                       {config.label}
                     </span>
@@ -252,7 +252,7 @@ const ResultPage = ({ result, onRestart }) => {
                   {toneConfig[selectedTone].label} Mode
                 </h4>
               </div>
-              <p className="text-gray-200 text-lg leading-relaxed">
+              <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
                 {toneResponses[selectedTone]}
               </p>
               <div className="mt-4 text-xs text-gray-500 italic">

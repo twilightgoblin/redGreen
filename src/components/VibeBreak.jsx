@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const VibeBreak = ({ message, questionNumber }) => {
   return (
-    <div className="flex items-center justify-center min-h-[80vh]">
+    <div className="flex items-center justify-center min-h-[80vh] px-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -16,12 +16,12 @@ const VibeBreak = ({ message, questionNumber }) => {
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1.2, 1] }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center"
+          className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center"
         >
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="text-3xl"
+            className="text-2xl sm:text-3xl"
           >
             ✨
           </motion.div>
@@ -33,10 +33,10 @@ const VibeBreak = ({ message, questionNumber }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">
             Vibe Check
           </h2>
-          <p className="text-xl text-cyan-200 mb-6">
+          <p className="text-lg sm:text-xl text-cyan-200 mb-6 leading-relaxed">
             {message}
           </p>
           <div className="text-gray-400 text-sm">

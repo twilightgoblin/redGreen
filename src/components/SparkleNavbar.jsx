@@ -127,7 +127,7 @@ const SparkleNavbar = ({
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden mt-4 flex flex-col items-center gap-6 bg-black/50 backdrop-blur-md py-4 px-6 rounded-2xl border border-cyan-500/30 shadow-lg shadow-cyan-400/10 transform transition-all duration-500 ${
+        className={`md:hidden mt-4 mx-4 flex flex-col items-center gap-4 bg-black/80 backdrop-blur-md py-6 px-6 rounded-2xl border border-cyan-500/30 shadow-lg shadow-cyan-400/10 transform transition-all duration-500 ${
           menuOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
         }`}
       >
@@ -135,9 +135,11 @@ const SparkleNavbar = ({
           <div
             key={index}
             onClick={() => handleNavigation(item, index)}
-            className={`text-lg font-medium cursor-pointer transition-all duration-300 ${
-              index === activeIndex ? "text-cyan-400" : "text-white"
-            } hover:text-cyan-400`}
+            className={`text-base font-medium cursor-pointer transition-all duration-300 py-2 px-4 rounded-lg ${
+              index === activeIndex 
+                ? "text-cyan-400 bg-cyan-400/10" 
+                : "text-white hover:bg-gray-800/50"
+            } hover:text-cyan-400 w-full text-center`}
           >
             {item}
           </div>
