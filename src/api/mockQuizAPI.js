@@ -1321,12 +1321,12 @@ const selfQuestionBank = {
     },
     {
       "id": 16,
-      "text": "Your partner wants to try something new in the bedroom that you're not sure about. What do you do?",
+      "text": "Your partner wants to join a new club or activity together that you're not really interested in. What do you do?",
       "options": [
-        { "text": "Talk openly about boundaries and what we're both comfortable with.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Give it a try - it could be fun and we'll spend time together.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
         { "text": "Say maybe but need time to think about it.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Feel pressured and agree even though I'm uncomfortable.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Get disgusted and shame them for even asking.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Feel pressured and agree even though I'm not interested.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Refuse and make them feel bad for even suggesting it.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {

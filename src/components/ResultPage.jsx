@@ -123,11 +123,28 @@ const ResultPage = ({ result, onRestart }) => {
             </motion.p>
           </div>
 
+          {/* Scroll Instruction */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <div className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl p-4 border border-cyan-400/30">
+              <p className="text-cyan-300 font-medium text-sm sm:text-base">
+                ✨ Keep scrolling for the real tea! ✨
+              </p>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">
+                Get your comfort zone, roast session & brutal truth below 👇
+              </p>
+            </div>
+          </motion.div>
+
           {/* Score Breakdown */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
             className="bg-gray-800/50 rounded-2xl p-6 md:p-8 mb-8 backdrop-blur-sm"
           >
             <h3 className="text-xl font-semibold text-white mb-4 text-center">Your Vibe Breakdown</h3>
@@ -199,6 +216,8 @@ const ResultPage = ({ result, onRestart }) => {
               })}
             </div>
           </motion.div>
+
+
 
           {/* Tone Selection */}
           <motion.div
