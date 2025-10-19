@@ -237,6 +237,47 @@
     }
   }
   
+  /* Mobile touch improvements for quiz options */
+  @media (max-width: 767px) {
+    .quiz-option-button {
+      min-height: 72px;
+      padding: 1.25rem;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(34, 211, 238, 0.1);
+    }
+    
+    .quiz-option-circle {
+      min-width: 40px;
+      min-height: 40px;
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+    
+    .quiz-option-text {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+  
+  /* Extra small mobile screens */
+  @media (max-width: 480px) {
+    .quiz-option-button {
+      min-height: 80px;
+      padding: 1.5rem 1rem;
+    }
+    
+    .quiz-option-circle {
+      min-width: 44px;
+      min-height: 44px;
+      font-size: 1rem;
+    }
+    
+    .quiz-option-text {
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+  }
+
   /* iPad specific touch improvements */
   @media (min-width: 768px) and (max-width: 1024px) {
     button, .clickable {

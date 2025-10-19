@@ -94,8 +94,20 @@ const SparkleNavbar = ({
     });
   }, [activeIndex]);
 
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [menuOpen]);
+
   return (
-    <nav className="w-full flex flex-col items-center justify-center text-white py-6 bg-transparent select-none">
+    <nav className="w-full flex flex-col items-center justify-center text-white py-6 bg-transparent select-none relative">
       {/* Desktop Nav */}
       <ul className="hidden md:flex gap-8 lg:gap-10 relative">
         {items.map((item, index) => (
@@ -115,36 +127,37 @@ const SparkleNavbar = ({
       </ul>
 
       {/* Mobile Navbar */}
-      <div className="md:hidden w-full flex justify-between items-center px-6">
+      <div className="md:hidden w-full flex justify-between items-center px-6 relative z-50">
         <h1 className="text-xl font-semibold text-cyan-400">RedGreen</h1>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-cyan-400 focus:outline-none text-3xl relative z-50"
+          className="text-cyan-400 focus:outline-none text-2xl relative z-50 p-2 rounded-lg hover:bg-cyan-400/10 transition-colors duration-200"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          {menuOpen ? <HiX className="animate-spin-slow" /> : <HiMenu />}
+          {menuOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <div
-        className={`md:hidden mt-4 mx-4 flex flex-col items-center gap-4 bg-black/80 backdrop-blur-md py-6 px-6 rounded-2xl border border-cyan-500/30 shadow-lg shadow-cyan-400/10 transform transition-all duration-500 ${
-          menuOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
-        }`}
-      >
-        {items.map((item, index) => (
-          <div
-            key={index}
-            onClick={() => handleNavigation(item, index)}
-            className={`text-base font-medium cursor-pointer transition-all duration-300 py-2 px-4 rounded-lg ${
-              index === activeIndex 
-                ? "text-cyan-400 bg-cyan-400/10" 
-                : "text-white hover:bg-gray-800/50"
-            } hover:text-cyan-400 w-full text-center`}
-          >
-            {item}
+      {/* Mobile Menu - Simple Solid Design */}
+      {menuOpen && (
+        <div className="md:hidden w-full mt-4 bg-gray-900 border-t border-gray-700">
+          <div className="flex flex-col py-4">
+            {items.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleNavigation(item, index)}
+                className={`text-left px-6 py-4 text-base font-medium transition-colors duration-200 border-b border-gray-800 last:border-b-0 ${
+                  index === activeIndex 
+                    ? "text-cyan-400 bg-gray-800" 
+                    : "text-white hover:bg-gray-800 hover:text-cyan-300"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };

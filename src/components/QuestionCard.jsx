@@ -50,7 +50,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[80vh] px-4">
+    <div className="flex items-center justify-center min-h-[80vh] px-4 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -79,7 +79,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
         </motion.div>
 
         {/* Answer Options */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {question.options.map((option, index) => (
             <motion.button
               key={index}
@@ -89,7 +89,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
               onClick={() => handleAnswerClick(option)}
               disabled={isAnswering}
               className={`
-                w-full p-4 sm:p-6 md:p-8 rounded-2xl border-2 text-left transition-all duration-300
+                w-full p-5 sm:p-6 md:p-8 rounded-2xl border-2 text-left transition-all duration-300 min-h-[72px] sm:min-h-[80px]
                 ${selectedAnswer === option
                   ? 'border-cyan-400 bg-cyan-400/10 shadow-lg shadow-cyan-400/20'
                   : 'border-gray-600 bg-gray-800/50 hover:border-gray-400 hover:bg-gray-700/50'
@@ -97,11 +97,12 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
                 ${isAnswering && selectedAnswer !== option ? 'opacity-50' : ''}
                 disabled:cursor-not-allowed
                 group
+                active:scale-[0.98] touch-manipulation quiz-option-button
               `}
             >
-              <div className="flex items-start gap-3 sm:gap-4">
+              <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
                 <div className={`
-                  w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0
+                  w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full border-2 flex items-center justify-center text-sm sm:text-base md:text-lg font-bold flex-shrink-0 quiz-option-circle
                   ${selectedAnswer === option
                     ? 'border-cyan-400 bg-cyan-400 text-black'
                     : 'border-gray-400 text-gray-400 group-hover:border-white group-hover:text-white'
@@ -111,7 +112,7 @@ const QuestionCard = ({ question, questionNumber, totalQuestions, onAnswer }) =>
                   {String.fromCharCode(65 + index)}
                 </div>
                 <p className={`
-                  text-base sm:text-lg md:text-xl leading-relaxed
+                  text-base sm:text-lg md:text-xl leading-relaxed flex-1 quiz-option-text
                   ${selectedAnswer === option ? 'text-cyan-100' : 'text-gray-200 group-hover:text-white'}
                   transition-colors duration-300
                 `}>
