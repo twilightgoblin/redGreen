@@ -24,8 +24,10 @@ function shuffleQuestionOptions(question) {
 // Helper function to create shuffled versions of all questions at the start of quiz
 function createShuffledQuestionBank(mode = 'partner') {
   if (mode === 'self') {
+    // Shuffle both the question order AND the options within each question
+    const shuffledQuestions = shuffleArray(selfQuestionBank.questions);
     return {
-      questions: selfQuestionBank.questions.map(q => shuffleQuestionOptions(q))
+      questions: shuffledQuestions.map(q => shuffleQuestionOptions(q))
     };
   }
 
@@ -1169,202 +1171,202 @@ const selfQuestionBank = {
   questions: [
     {
       "id": 1,
-      "text": "When your partner takes hours to reply, what's your first instinct?",
+      "text": "Your partner mentions their ex had a great sense of humor. How do you react?",
       "options": [
-        { "text": "They're busy, I'll wait.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Maybe they forgot, it's fine.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Check if they're online somewhere else.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Blow up their phone.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "That's nice, everyone has good qualities.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Cool, but let's talk about something else.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Am I not funny enough for you?", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Why are you even thinking about them?", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 2,
-      "text": "How do you handle disagreements?",
+      "text": "Your partner gets a text from someone attractive at 11 PM. What's your move?",
       "options": [
-        { "text": "Talk calmly and find common ground.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Take a break and revisit later.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Get defensive quickly.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Turn it into a shouting match.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Trust them completely, no questions.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Casually ask who it was later.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Check their phone when they're not looking.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Demand to see the conversation right now.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 3,
-      "text": "Your partner forgets an anniversary. You...",
+      "text": "You see your partner laughing at someone else's Instagram story. Your reaction?",
       "options": [
-        { "text": "Laugh it off — people forget.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Feel a little hurt but move on.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Bring it up every few weeks.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Start an argument immediately.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Good for them, everyone needs laughs.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Wonder what was so funny but don't ask.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Ask to see what they're laughing at.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Feel jealous they're not laughing at your posts.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 4,
-      "text": "Do you share passwords or keep things private?",
+      "text": "Your partner wants to hang out with friends instead of you tonight. How do you feel?",
       "options": [
-        { "text": "Respect privacy completely.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Share if necessary, but not mandatory.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Ask for passwords out of curiosity.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Demand full access — no secrets!", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Happy they have good friendships.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "A little disappointed but totally fine.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Hurt that they'd choose friends over me.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Angry and make them feel guilty about it.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 5,
-      "text": "Your partner cancels plans last minute. You...",
+      "text": "Your partner gets promoted at work. Your first thought is:",
       "options": [
-        { "text": "Understand — things happen.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Disappointed, but it's okay.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Guilt-trip them jokingly.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Make them feel bad for bailing.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "I'm so proud of them and their hard work!", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "That's great, hope they still have time for us.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Now they'll think they're better than me.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Great, now they'll be even busier and ignore me.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 6,
-      "text": "Do you check their phone when they're not around?",
+      "text": "Your partner starts a new hobby you don't understand. What do you do?",
       "options": [
-        { "text": "Never — that's private.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Only if something feels off.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Sometimes, just curiosity.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Regularly — gotta stay aware.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Ask them to teach me about it.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Support them even if it's not my thing.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Make jokes about how weird it is.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Complain that they're wasting time on it.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 7,
-      "text": "When your partner talks about their ex...",
+      "text": "You and your partner have different political views. How do you handle it?",
       "options": [
-        { "text": "I listen — it's part of their story.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "It's fine, as long as it's respectful.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Get slightly insecure.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Instantly annoyed.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Respect their perspective and have healthy debates.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Agree to disagree and avoid the topic.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Try to convince them they're wrong.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Get angry and question the relationship.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 8,
-      "text": "Your partner needs space for a few days. You...",
+      "text": "Your partner's family doesn't seem to like you. What's your approach?",
       "options": [
-        { "text": "Respect it completely.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Check in once in a while.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Feel anxious and overthink.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Refuse to give space — what space?", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Keep being kind and give it time.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Try harder to win them over.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Complain to my partner about them.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Make my partner choose between me and them.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 9,
-      "text": "Do you remember small details about them?",
+      "text": "Your partner is going through a tough time at work. How do you support them?",
       "options": [
-        { "text": "Always — I genuinely care.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Most of the time.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Sometimes forget — bad memory.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Nah, who keeps track?", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Listen actively and offer comfort without trying to fix everything.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Give advice on how to handle the situation.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Get frustrated that they're always stressed.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Make it about how their stress affects me.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 10,
-      "text": "When jealous, what do you do?",
+      "text": "Your partner makes a big decision without consulting you. What's your reaction?",
       "options": [
-        { "text": "Communicate honestly about it.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Try to ignore but it lingers.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Drop passive-aggressive hints.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Start an argument instantly.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Ask why they didn't include me and discuss it calmly.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Feel hurt but try to understand their reasoning.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Get upset and make them feel guilty.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Explode and demand they change their decision.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 11,
-      "text": "You and your partner disagree politically. You...",
+      "text": "You find out your partner has been venting about your relationship to their friends. How do you feel?",
       "options": [
-        { "text": "Respect their perspective.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Discuss but keep it civil.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Try to convince them hard.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Say 'I can't be with someone like that.'", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Glad they have support, but want to talk about it together.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "A bit hurt but understand they need to vent sometimes.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Betrayed that they shared our private business.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Furious and demand they stop talking to those friends.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 12,
-      "text": "How often do you initiate affection?",
+      "text": "Your partner wants to move to a different city for their career. What's your response?",
       "options": [
-        { "text": "Frequently — I show love openly.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Occasionally, when I feel like it.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Rarely, but expect it from them.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Not my thing — they should handle it.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Let's figure out how to make this work for both of us.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "I'm nervous but willing to consider it.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "That's really inconvenient for me.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Absolutely not, they need to choose me or the job.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 13,
-      "text": "Do you compare your relationship to others?",
+      "text": "Your partner has a close friend of the opposite gender. How do you handle it?",
       "options": [
-        { "text": "No, every relationship is unique.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Sometimes, just casually.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Often, makes me feel bad.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "All the time — we must compete.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Trust them and get to know the friend too.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Feel a bit uncomfortable but don't say anything.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Ask lots of questions about their friendship.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Demand they cut off the friendship.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 14,
-      "text": "When your partner cries, what's your reaction?",
+      "text": "Your partner spends money on something expensive without telling you. What do you do?",
       "options": [
-        { "text": "Comfort them immediately.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Give them space but stay close.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Awkwardly change the topic.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Get irritated and walk away.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Ask about it calmly and discuss our financial boundaries.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Feel annoyed but let it slide this time.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Give them the silent treatment until they apologize.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Explode and make them return it immediately.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 15,
-      "text": "Do you bring up past mistakes during fights?",
+      "text": "Your partner posts a thirst trap on social media. How do you react?",
       "options": [
-        { "text": "Never, it's resolved once it's over.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Sometimes, to make a point.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Often, can't help it.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Always — history repeats!", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Hype them up in the comments - they look amazing!", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Like it but feel a bit weird about all the attention.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Ask them why they need validation from strangers.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Demand they delete it and never post like that again.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 16,
-      "text": "How do you react when your partner achieves something big?",
+      "text": "Your partner wants to try something new in the bedroom that you're not sure about. What do you do?",
       "options": [
-        { "text": "Celebrate them loud and proud!", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Happy for them, but move on quick.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Lowkey jealous but supportive.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Feel competitive — I need to top that.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Talk openly about boundaries and what we're both comfortable with.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Say maybe but need time to think about it.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Feel pressured and agree even though I'm uncomfortable.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Get disgusted and shame them for even asking.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 17,
-      "text": "Do you communicate your needs clearly?",
+      "text": "Your partner gains weight and seems insecure about it. How do you respond?",
       "options": [
-        { "text": "Always — honesty keeps it healthy.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Mostly, unless it feels awkward.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Not really, I expect them to guess.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Nope, I just shut down.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Reassure them they're beautiful and support their feelings.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Tell them it doesn't matter to me but avoid the topic.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Suggest they should work out more.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Agree that they've let themselves go.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 18,
-      "text": "Your partner hangs out with someone attractive. You...",
+      "text": "Your partner's mental health is affecting the relationship. What's your approach?",
       "options": [
-        { "text": "Trust them completely.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Feel a little weird but stay chill.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Ask questions later.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Start a fight about it.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Support them while encouraging professional help.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Try to be patient but feel overwhelmed sometimes.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Get frustrated that they're not 'getting better' fast enough.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Tell them to just get over it and stop being dramatic.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 19,
-      "text": "How do you apologize after a fight?",
+      "text": "Your partner wants to adopt a pet but you're not ready. How do you handle it?",
       "options": [
-        { "text": "Own up fully and make it right.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Apologize halfway — depends who started it.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Say sorry but don't mean it.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Wait for them to apologize first.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Discuss the responsibilities and timeline honestly.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Say maybe in the future but not now.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Give in reluctantly to make them happy.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Flat out refuse and get angry they even asked.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
       "id": 20,
-      "text": "When your partner is out with friends, you...",
+      "text": "Your partner forgets your birthday. What's your reaction?",
       "options": [
-        { "text": "Wish them fun and chill.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
-        { "text": "Check in once, that's it.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
-        { "text": "Stalk their stories a bit.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
-        { "text": "Text constantly to stay updated.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
+        { "text": "Gently remind them and plan something together.", "flagImpact": { "green": 2, "beige": 0, "red": 0 } },
+        { "text": "Feel hurt but don't want to make a big deal.", "flagImpact": { "green": 1, "beige": 1, "red": 0 } },
+        { "text": "Give them the cold shoulder until they figure it out.", "flagImpact": { "green": 0, "beige": 1, "red": 1 } },
+        { "text": "Explode and make them feel terrible about it.", "flagImpact": { "green": 0, "beige": 0, "red": 2 } }
       ]
     },
     {
@@ -1629,13 +1631,8 @@ function selectNextQuestion(userId, previousAnswer = null) {
   }
 
   if (session.mode === 'self') {
-    // For self-assessment, get the next question in sequence from shuffled bank
-    const currentIndex = session.questionIndex || 0;
-    const nextIndex = currentIndex + 1;
-    if (nextIndex < session.shuffledBank.questions.length && nextIndex < quizData.maxQuestions) {
-      return session.shuffledBank.questions[nextIndex];
-    }
-    return null; // No more questions
+    // For self-assessment, pick any unanswered question randomly from shuffled bank
+    return getRandomUnansweredQuestion(userId);
   }
 
   let nextThemes = [];
@@ -1688,8 +1685,8 @@ export const mockAPI = {
         let starterQuestion;
 
         if (mode === 'self') {
-          // For self-assessment, get the first question from the shuffled bank
-          starterQuestion = shuffledBank.questions[0];
+          // For self-assessment, get a random question from the shuffled bank
+          starterQuestion = shuffledBank.questions[Math.floor(Math.random() * shuffledBank.questions.length)];
         } else {
           // Get a random starter question for partner mode from shuffled bank
           starterQuestion = getRandomStarter(mode, shuffledBank);
@@ -1705,8 +1702,7 @@ export const mockAPI = {
           askedQuestions: new Set(),
           questionCount: 1, // Start at 1 since we're giving the first question
           currentTheme: starterQuestion.theme || 'general',
-          currentQuestion: starterQuestion,
-          questionIndex: mode === 'self' ? 0 : null // Track index for self-assessment
+          currentQuestion: starterQuestion
         };
 
         // Mark starter question as asked
@@ -1786,10 +1782,7 @@ export const mockAPI = {
           session.questionCount += 1;
           session.askedQuestions.add(nextQuestion.id);
 
-          // Update questionIndex for self-assessment mode
-          if (session.mode === 'self') {
-            session.questionIndex = (session.questionIndex || 0) + 1;
-          }
+
 
           userSessions.set(userId, session);
 
