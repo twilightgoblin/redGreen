@@ -314,14 +314,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **React** team for the amazing framework
 - **Vite** for blazing-fast development experience
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/redgreen/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/redgreen/discussions)
-- **Email**: support@redgreen.app
-
 ---
-
-**Made with ❤️ for better relationships and clearer communication.**
 
 *Know the vibes. Spot the signals. Navigate life smarter.*
