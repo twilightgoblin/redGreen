@@ -314,6 +314,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **React** team for the amazing framework
 - **Vite** for blazing-fast development experience
 
----
+------
 
 *Know the vibes. Spot the signals. Navigate life smarter.*
+
+
+
