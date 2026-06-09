@@ -60,28 +60,55 @@ export function LampDemo() {
           transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
           className="mt-8 md:mt-10 px-4"
         >
-          <AnimatedButton
-            onClick={handleGetStarted}
-            className="text-white font-semibold shadow-lg w-full sm:w-auto"
-            variant="default"
-            size="default"
-            glow={true}
-            textEffect="normal"
-            uppercase={true}
-            rounded="custom"
-            shimmerColor="#7ebebf"
-            shimmerSize="0.15em"
-            shimmerDuration="3s"
-            borderRadius="100px"
-            background="linear-gradient(135deg, #7ebebf, #00CED1)"
-            style={{ 
-              padding: "0.75em 2em", 
-              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
-              minWidth: "200px"
-            }}
-          >
+          <button onClick={handleGetStarted} className="neon-btn-home">
             GET STARTED
-          </AnimatedButton>
+          </button>
+
+          <style>{`
+            .neon-btn-home {
+              position: relative;
+              padding: 0.85em 3em;
+              font-size: clamp(1rem, 2.5vw, 1.2rem);
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              color: #fff;
+              background: linear-gradient(135deg, #2dd4c8, #00CED1);
+              border: none;
+              border-radius: 100px;
+              cursor: pointer;
+              outline: none;
+              min-width: 200px;
+              box-shadow:
+                0 0 8px #00e5ff,
+                0 0 20px #00e5ff,
+                0 0 45px #00c8d7,
+                inset 0 0 12px rgba(255,255,255,0.15);
+              transition: box-shadow 0.3s ease, transform 0.2s ease;
+            }
+            .neon-btn-home::before {
+              content: '';
+              position: absolute;
+              inset: -3px;
+              border-radius: 100px;
+              background: transparent;
+              border: 2px solid rgba(180,255,255,0.6);
+              box-shadow:
+                0 0 10px rgba(0,229,255,0.6),
+                0 0 30px rgba(0,229,255,0.3);
+              pointer-events: none;
+            }
+            .neon-btn-home:hover {
+              box-shadow:
+                0 0 12px #00e5ff,
+                0 0 35px #00e5ff,
+                0 0 70px #00c8d7,
+                inset 0 0 18px rgba(255,255,255,0.2);
+              transform: scale(1.04);
+            }
+            .neon-btn-home:active {
+              transform: scale(0.98);
+            }
+          `}</style>
         </motion.div>
       </div>
     </LampContainer>

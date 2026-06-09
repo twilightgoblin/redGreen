@@ -1,250 +1,237 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { User, Trophy, Lightbulb, ScreenShare, Building2, User2, Sparkles, ChevronRight } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import {
+  User,
+  Trophy,
+  Lightbulb,
+  ScreenShare,
+  BarChart2,
+  Users,
+} from "lucide-react";
+import SparkleNavbar from "../components/SparkleNavbar";
 
-// Icon mapping
-const iconMap = {
-  User: User,
-  Trophy: Trophy,
-  Lightbulb: Lightbulb,
-  ScreenShare: ScreenShare,
-  Building2: Building2,
-  User2: User2
-};
+import { CardSpotlight } from "../components/ui/card-spotlight.jsx";
 
-// Pixel class and PixelCard logic (keep as is from your original code)
-class Pixel {
-  constructor(canvas, context, x, y, color, speed, delay) {
-    this.width = canvas.width;
-    this.height = canvas.height;
-    this.ctx = context;
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    this.speed = this.getRandomValue(0.1, 0.9) * speed;
-    this.size = 0;
-    this.sizeStep = Math.random() * 0.4;
-    this.minSize = 0.5;
-    this.maxSizeInteger = 2;
-    this.maxSize = this.getRandomValue(this.minSize, this.maxSizeInteger);
-    this.delay = delay;
-    this.counter = 0;
-    this.counterStep = Math.random() * 4 + (this.width + this.height) * 0.01;
-    this.isIdle = false;
-    this.isReverse = false;
-    this.isShimmer = false;
-  }
 
-  getRandomValue(min, max) { return Math.random() * (max - min) + min; }
-  draw() {
-    const centerOffset = this.maxSizeInteger * 0.5 - this.size * 0.5;
-    this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x + centerOffset, this.y + centerOffset, this.size, this.size);
-  }
-  appear() { /* ... same as your code ... */ }
-  disappear() { /* ... same as your code ... */ }
-  shimmer() { /* ... same as your code ... */ }
-}
+const features = [
+  {
+    icon: User,
+    title: "Humanized Advice",
+    description:
+      "Get real feedback based on your answers — Comfort, Roast, or Truth modes tailored just for you.",
+    tag: "Personalized",
+  },
+  {
+    icon: Trophy,
+    title: "Spot Green Flags",
+    description:
+      "Learn what's working in your relationship or interactions and celebrate the wins.",
+    tag: "Awareness",
+  },
+  {
+    icon: Lightbulb,
+    title: "Avoid Red Flags",
+    description:
+      "Identify potential issues early so you can make informed, confident decisions.",
+    tag: "Prevention",
+  },
+  {
+    icon: ScreenShare,
+    title: "Patch Suggestions",
+    description:
+      "Get practical, humanized advice to improve communication or turn tricky situations around.",
+    tag: "Guidance",
+  },
+  {
+    icon: BarChart2,
+    title: "Insightful Analytics",
+    description:
+      "Track patterns across answers to reveal personality tendencies and behavior signals.",
+    tag: "Insights",
+  },
+  {
+    icon: Users,
+    title: "Interactive Quiz Flow",
+    description:
+      "Answer questions in a dynamic, gamified experience designed to uncover flags accurately.",
+    tag: "Engaging",
+  },
+];
 
-function getEffectiveSpeed(value, reducedMotion) {
-  const min = 0, max = 100, throttle = 0.001;
-  const parsed = parseInt(value, 10);
-  if (parsed <= min || reducedMotion) return min;
-  else if (parsed >= max) return max * throttle;
-  else return parsed * throttle;
-}
 
-const PixelCard = ({ children, className = '' }) => {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const pixelsRef = useRef([]);
-  const animationRef = useRef(null);
-  const timePreviousRef = useRef(performance.now());
-  const reducedMotion = useRef(window.matchMedia('(prefers-reduced-motion: reduce)').matches).current;
 
-  const gap = 4;
-  const speed = 35;
-  const colors = '#06b6d4,#22d3ee,#67e8f9'; 
-
-  const initPixels = () => { /* same as your original code */ };
-  const doAnimate = fnName => { /* same as your original code */ };
-  const handleAnimation = name => { /* same as your original code */ };
-  const onMouseEnter = () => handleAnimation('appear');
-  const onMouseLeave = () => handleAnimation('disappear');
-
-  useEffect(() => { /* same as your original code */ }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      className={`relative overflow-hidden rounded-2xl border border-gray-800 ${className}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      style={{ isolation: 'isolate' }}
-    >
-      <canvas 
-        className="absolute inset-0 w-full h-full block pointer-events-none" 
-        ref={canvasRef}
-        style={{ zIndex: 1 }}
-      />
-      <div className="relative" style={{ zIndex: 2 }}>
-        {children}
-      </div>
-    </div>
-  );
-};
-
-// FeatureCard
-const FeatureCard = ({ feature, index, side }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const Icon = iconMap[feature.icon];
-  
-  return (
-    <div
-      className={`group relative transition-all duration-500 ${
-        side === 'left' ? 'sm:pr-8' : 'sm:pl-8'
-      }`}
-      style={{
-        animationDelay: `${index * 150}ms`,
-        opacity: 0,
-        animation: 'fadeInUp 0.6s ease-out forwards'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <PixelCard className="transition-all duration-300">
-        <div className={`relative bg-slate-950 rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-300 ${feature.cornerStyle}`}>
-          <div 
-            className="absolute inset-0 pointer-events-none transition-opacity duration-700"
-            style={{
-              background: 'radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%)',
-              opacity: isHovered ? 1 : 0
-            }}
-          />
-          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="absolute inset-0 rounded-2xl bg-cyan-500/20 blur-xl" />
-          </div>
-          <div className="relative z-10">
-            <div className="flex items-start justify-between mb-4">
-              <div className={`relative p-3 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 group-hover:from-cyan-400 group-hover:to-cyan-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3 ${
-                isHovered ? 'shadow-lg shadow-cyan-500/50' : ''
-              }`}>
-                <Icon className="w-6 h-6 text-white" />
-                {isHovered && (
-                  <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-cyan-300 animate-pulse" />
-                )}
-              </div>
-              <ChevronRight className={`w-5 h-5 text-gray-600 transition-all duration-300 ${
-                isHovered ? 'translate-x-1 text-cyan-400' : ''
-              }`} />
-            </div>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-              {feature.title}
-            </h3>
-            <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed">
-              {feature.description}
-            </p>
-            <div className="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-500" />
-          </div>
-        </div>
-      </PixelCard>
-    </div>
-  );
-};
-
-// Main Feature Page
 const FlagPulseFeatures = () => {
-  const navigate = useNavigate(); // <-- for navigation
-
-  const features = {
-    leftFeatures: [
-      { icon: "User", title: "Humanized Advice", description: "Get real feedback based on your answers — Comfort, Roast, or Truth modes.", position: "left", cornerStyle: "sm:translate-x-4 sm:rounded-br-[2px]" },
-      { icon: "Trophy", title: "Spot Green Flags", description: "Learn what's working in your relationship or interactions and celebrate it.", position: "left", cornerStyle: "sm:-translate-x-4 sm:rounded-br-[2px]" },
-      { icon: "Lightbulb", title: "Avoid Red Flags", description: "Identify potential issues early so you can make informed decisions.", position: "left", cornerStyle: "sm:translate-x-4 sm:rounded-tr-[2px]" }
-    ],
-    rightFeatures: [
-      { icon: "ScreenShare", title: "Patch Suggestions", description: "Get practical, humanized advice to improve communication or situations.", position: "right", cornerStyle: "sm:-translate-x-4 sm:rounded-bl-[2px]" },
-      { icon: "Building2", title: "Insightful Analytics", description: "Track patterns across answers to reveal personality tendencies or behavior signals.", position: "right", cornerStyle: "sm:translate-x-4 sm:rounded-bl-[2px]" },
-      { icon: "User2", title: "Interactive Quiz Flow", description: "Answer questions in a dynamic, gamified experience to uncover flags accurately.", position: "right", cornerStyle: "sm:-translate-x-4 sm:rounded-tl-[2px]" }
-    ],
-    centerColumn: {
-      header: "Key Benefits of RedGreen",
-      subHeader: "Discover green flags, spot red flags, and get practical advice in a fun, humanized way.",
-      tag: "Features"
-    }
-  };
-
-  const handleGetStarted = () => {
-    navigate("/quiz"); // <-- Navigate to quiz page
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-slate-950 py-20 px-4 overflow-hidden relative">
-      {/* Styles */}
-      <style>{`
-        @keyframes fadeInUp { from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);} }
-        @keyframes float { 0%,100% {transform:translateY(0px);} 50% {transform:translateY(-20px);} }
-        @keyframes pulse-glow { 0%,100% {opacity:0.3;} 50% {opacity:0.6;} }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-      `}</style>
-
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-float" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-400 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-cyan-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-float" style={{ animationDelay: '4s' }} />
+    <div className="relative min-h-screen w-full bg-black text-white">
+      {/* Navbar */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        <SparkleNavbar
+          items={["Home", "Features", "About", "How It Works", "Contact"]}
+          color="#1E90FF"
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto relative">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 rounded-full border border-cyan-500/20 mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm font-semibold text-cyan-400">{features.centerColumn.tag}</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 px-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500">{features.centerColumn.header}</span>
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">{features.centerColumn.subHeader}</p>
-        </div>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.07),transparent_70%)] pointer-events-none" />
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 px-4">
-          <div className="space-y-8">
-            {features.leftFeatures.map((f, i) => <FeatureCard key={i} feature={f} index={i} side="left" />)}
-          </div>
-          <div className="hidden lg:flex items-center justify-center">
-            {/* Center Orb visual (same as before) */}
-            <div className="relative w-full max-w-xs">
-              <div className="relative w-64 h-64 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-cyan-400 to-cyan-600 rounded-full blur-3xl opacity-20 animate-pulse-glow" />
-                <div className="absolute inset-4 bg-gradient-to-br from-cyan-500 via-cyan-400 to-cyan-600 rounded-full blur-2xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
-                <div className="absolute inset-8 bg-gradient-to-br from-cyan-500 via-cyan-400 to-cyan-600 rounded-full shadow-2xl flex items-center justify-center border border-cyan-400/30">
-                  <Sparkles className="w-20 h-20 text-white animate-pulse" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-8">
-            {features.rightFeatures.map((f, i) => <FeatureCard key={i+3} feature={f} index={i+3} side="right" />)}
-          </div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-20">
-          <button
-            onClick={handleGetStarted}
-            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-semibold rounded-full shadow-lg shadow-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/60 transition-all duration-300 transform hover:scale-105"
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-500 mb-5"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              GET STARTED
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </span>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-300 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-          </button>
+            Features
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          >
+            Everything you need to
+            <br />
+            <span className="text-cyan-400">read the room</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+          >
+            Discover green flags, spot red flags, and get practical advice
+            in a fun, humanized way — built for real life.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex justify-center"
+          >
+            <button
+              onClick={() => navigate("/quiz")}
+              className="neon-btn"
+            >
+              TRY IT NOW
+            </button>
+          </motion.div>
+
+          <style>{`
+            .neon-btn {
+              position: relative;
+              padding: 0.85em 3em;
+              font-size: 1rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              color: #fff;
+              background: linear-gradient(135deg, #2dd4c8, #00CED1);
+              border: none;
+              border-radius: 100px;
+              cursor: pointer;
+              outline: none;
+              box-shadow:
+                0 0 8px #00e5ff,
+                0 0 20px #00e5ff,
+                0 0 45px #00c8d7,
+                inset 0 0 12px rgba(255,255,255,0.15);
+              transition: box-shadow 0.3s ease, transform 0.2s ease;
+            }
+            .neon-btn::before {
+              content: '';
+              position: absolute;
+              inset: -3px;
+              border-radius: 100px;
+              background: transparent;
+              border: 2px solid rgba(180,255,255,0.6);
+              box-shadow:
+                0 0 10px rgba(0,229,255,0.6),
+                0 0 30px rgba(0,229,255,0.3);
+              pointer-events: none;
+            }
+            .neon-btn:hover {
+              box-shadow:
+                0 0 12px #00e5ff,
+                0 0 35px #00e5ff,
+                0 0 70px #00c8d7,
+                inset 0 0 18px rgba(255,255,255,0.2);
+              transform: scale(1.04);
+            }
+            .neon-btn:active {
+              transform: scale(0.98);
+            }
+          `}</style>
         </div>
-      </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold text-center mb-3"
+          >
+            What RedGreen offers
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-gray-500 text-center mb-14 max-w-xl mx-auto text-sm"
+          >
+            Six features working together so you always know what's really going on.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.07 }}
+              >
+                <CardSpotlight
+                  radius={220}
+                  color="#0e4c59"
+                  className="p-6 h-full"
+                >
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Tag */}
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-600 mb-4 block">
+                      {feature.tag}
+                    </span>
+
+                    {/* Icon */}
+                    <div className="w-11 h-11 mb-5 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+                      <feature.icon size={20} className="text-cyan-400" />
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="text-base font-semibold text-white mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed flex-1">
+                      {feature.description}
+                    </p>
+
+                    {/* Bottom divider */}
+                    <div className="mt-6 h-px w-full bg-neutral-800 rounded-full" />
+                  </div>
+                </CardSpotlight>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };

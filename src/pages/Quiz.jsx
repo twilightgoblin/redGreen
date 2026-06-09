@@ -6,6 +6,7 @@ import VibeBreak from "../components/VibeBreak";
 import ResultPage from "../components/ResultPage";
 import ProgressBar from "../components/ProgressBar";
 import SparkleNavbar from "../components/SparkleNavbar";
+import { Users, Heart, User, ArrowRight, Clock, List, ShieldCheck } from "lucide-react";
 
 const Quiz = () => {
   const [mode, setMode] = useState(null); // 'partner' or 'self' - null means show selection
@@ -251,7 +252,9 @@ const Quiz = () => {
   // Mode selection screen
   if (!mode && !loading) {
     return (
-      <div className={`min-h-screen bg-gradient-to-br ${backgroundGradient} transition-all duration-1000 ease-in-out`}>
+      <div className="min-h-screen bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.07),transparent_70%)] pointer-events-none" />
+
         {/* Navigation */}
         <div className="fixed top-0 left-0 w-full z-50">
           <SparkleNavbar
@@ -259,100 +262,155 @@ const Quiz = () => {
             color="#1E90FF"
           />
         </div>
-        
-        <div className="flex items-center justify-center min-h-screen px-4 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
+
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-28">
+
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-6xl w-full"
+            transition={{ duration: 0.5 }}
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-500 mb-5"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-              className="text-6xl mb-6"
+            Vibe Check
+          </motion.p>
+
+          {/* Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-4 leading-tight"
+          >
+            Who are we<br />
+            <span className="text-cyan-400">analyzing today?</span>
+          </motion.h1>
+
+          {/* Sub */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-gray-400 text-base sm:text-lg text-center mb-4 max-w-xl leading-relaxed"
+          >
+            Answer honestly — we'll tell you exactly what the flags are saying.
+          </motion.p>
+
+          {/* Score legend */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 mb-12 text-sm text-gray-500"
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-green-400 inline-block" />
+              Green flag
+            </span>
+            <span className="text-gray-700">·</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-red-400 inline-block" />
+              Red flag
+            </span>
+            <span className="text-gray-700">·</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-yellow-400 inline-block" />
+              Mixed signals
+            </span>
+          </motion.div>
+
+          {/* Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-3xl"
+          >
+            {/* Partner card */}
+            <motion.button
+              onClick={() => startQuiz('partner')}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.97 }}
+              className="group relative text-left rounded-2xl bg-gray-800/50 border border-gray-700/60 hover:border-cyan-400/30 hover:bg-gray-800/70 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/40 overflow-hidden backdrop-blur-sm"
             >
-              🤔
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 px-4"
-            >
-              Choose Your Vibe Check
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-lg sm:text-xl text-gray-300 mb-4 leading-relaxed px-4"
-            >
-              What are we analyzing today?
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 mb-8 border border-gray-700/30"
-            >
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Both quizzes use the same scoring system: <span className="text-green-400 font-medium">Green flags</span> for healthy patterns, 
-                <span className="text-red-400 font-medium"> Red flags</span> for concerning behaviors, and 
-                <span className="text-yellow-400 font-medium"> Mixed signals</span> for inconsistent patterns.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto px-4"
-            >
-              <motion.button
-                onClick={() => startQuiz('partner')}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative overflow-hidden bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-cyan-700/10 backdrop-blur-sm border border-cyan-400/20 rounded-2xl p-6 sm:p-8 md:p-10 text-white font-semibold transition-all duration-300 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/20 w-full"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 text-center">
-                  <div className="text-4xl sm:text-5xl mb-2 group-hover:scale-110 transition-transform duration-300">💕</div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-300 mb-2">Test Your Partner</h3>
-                  <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
-                    Analyze their behavior patterns and discover if they're showing green or red flags in your relationship.
-                  </p>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400">
-                    <span>Are they green or red?</span>
-                    <span className="text-base sm:text-lg">🤔</span>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(6,182,212,0.05),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className="relative p-7 sm:p-8">
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-cyan-400/20 transition-colors duration-300">
+                    <Heart size={20} className="text-cyan-400" />
                   </div>
+                  <ArrowRight size={16} className="text-gray-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
-              </motion.button>
-              
-              <motion.button
-                onClick={() => startQuiz('self')}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative overflow-hidden bg-gradient-to-br from-red-500/10 via-pink-600/10 to-red-700/10 backdrop-blur-sm border border-red-400/20 rounded-2xl p-6 sm:p-8 md:p-10 text-white font-semibold transition-all duration-300 hover:border-red-400/40 hover:shadow-2xl hover:shadow-red-500/20 w-full"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 text-center">
-                  <div className="text-4xl sm:text-5xl mb-2 group-hover:scale-110 transition-transform duration-300">🪞</div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-red-300 mb-2">Know Your Flag</h3>
-                  <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
-                    Take an honest look at your own relationship behaviors and patterns. Self-awareness is the first step to growth.
-                  </p>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-red-400">
-                    <span>Are you the problem or the prize?</span>
-                    <span className="text-base sm:text-lg">✨</span>
+
+                <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-600 mb-3 block">
+                  Partner Mode
+                </span>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  Test Your Partner 💕
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                  Analyze their behavior patterns and find out if they're a green flag or a walking red flag in your relationship.
+                </p>
+
+                <div className="h-px w-full bg-neutral-800 rounded-full mb-4" />
+
+                <p className="text-xs text-gray-600 italic">
+                  "Are they green or red?" 🤔
+                </p>
+              </div>
+            </motion.button>
+
+            {/* Self card */}
+            <motion.button
+              onClick={() => startQuiz('self')}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.97 }}
+              className="group relative text-left rounded-2xl bg-gray-800/50 border border-gray-700/60 hover:border-purple-400/30 hover:bg-gray-800/70 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40 overflow-hidden backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(168,85,247,0.05),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className="relative p-7 sm:p-8">
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-purple-400/20 transition-colors duration-300">
+                    <User size={20} className="text-purple-400" />
                   </div>
+                  <ArrowRight size={16} className="text-gray-600 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
-              </motion.button>
-            </motion.div>
+
+                <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-purple-600 mb-3 block">
+                  Self Mode
+                </span>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  Know Your Flag 🪞
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                  Take an honest look at your own relationship behaviors and patterns. Self-awareness is the first step to growth.
+                </p>
+
+                <div className="h-px w-full bg-neutral-800 rounded-full mb-4" />
+
+                <p className="text-xs text-gray-600 italic">
+                  "Are you the problem or the prize?" ✨
+                </p>
+              </div>
+            </motion.button>
+          </motion.div>
+
+          {/* Footer meta */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="mt-10 flex items-center justify-center gap-5 text-xs text-gray-600"
+          >
+            <span className="flex items-center gap-1.5"><List size={11} /> 10 questions</span>
+            <span className="text-gray-800">·</span>
+            <span className="flex items-center gap-1.5"><Clock size={11} /> ~3 minutes</span>
+            <span className="text-gray-800">·</span>
+            <span className="flex items-center gap-1.5"><ShieldCheck size={11} /> No account needed</span>
           </motion.div>
         </div>
       </div>
